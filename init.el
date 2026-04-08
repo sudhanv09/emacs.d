@@ -2,22 +2,13 @@
 
 (add-to-list 'load-path
              (expand-file-name "lisp" user-emacs-directory))
-
-(require 'elpaca)
-(require 'ui)
-(require 'packages)
-(require 'meow-config)
+(load (expand-file-name "lisp/elpaca" user-emacs-directory))
 
 (elpaca-wait)
 
+(require 'ui)
+(require 'defaults)
+(require 'packages)
+(require 'meow-config)
 (require 'lsp)
-
 (require 'uniquify)
-(electric-pair-mode t)
-(show-paren-mode 1)
-(setq-default indent-tabs-mode nil)
-(save-place-mode t)
-(global-auto-revert-mode t)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-

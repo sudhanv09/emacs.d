@@ -5,9 +5,9 @@
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                       :ref nil :depth 1 :inherit ignore
-                       :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-                       :build (:not elpaca--activate-package)))
+                              :ref nil :depth 1 :inherit ignore
+                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+                              :build (:not elpaca-activate)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
        (build (expand-file-name "elpaca/" elpaca-builds-directory))
        (order (cdr elpaca-order))
@@ -40,7 +40,5 @@
 (elpaca `(,@elpaca-order))
 
 (elpaca elpaca-use-package
-        (elpaca-use-package-mode)
-        (setq use-package-always-ensure t))
-
-(provide 'elpaca)
+  (elpaca-use-package-mode)
+  (setq use-package-always-ensure t))

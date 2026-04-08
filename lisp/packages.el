@@ -1,5 +1,6 @@
 (use-package which-key
-  :init
+  :ensure nil
+  :config
   (which-key-mode))
 
 (use-package easysession
@@ -8,10 +9,12 @@
   (add-hook 'emacs-startup-hook #'easysession-save-mode 103))
 
 (use-package casual
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package nim-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.nim\\'")
 
 (use-package vertico
   :ensure t
@@ -19,15 +22,40 @@
   (vertico-cycle t)
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
-  (completion-styles '(basic substring partial-completion flex))
-  :init
+  :config
   (vertico-mode))
+
+(use-package savehist
+  :ensure nil
+  :init
+  (savehist-mode))
+
+(use-package recentf
+  :ensure nil
+  :init
+  (recentf-mode))
+
+(use-package vertico-directory
+  :ensure nil
+  :after vertico
+  :bind (:map vertico-map
+              ("RET"   . vertico-directory-enter)
+              ("DEL"   . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package marginalia
   :after vertico
   :ensure t
-  :init
+  :config
   (marginalia-mode))
+
+(use-package nerd-icons-completion
+  :ensure t
+  :after marginalia
+  :config
+  (nerd-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 (use-package consult
   :ensure t
@@ -57,41 +85,53 @@
   :ensure t
   :after (embark consult))
 
+(use-package consult-dir
+  :ensure t
+  :bind (("C-x C-d" . consult-dir)
+         :map vertico-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+
+(use-package wgrep
+  :ensure t
+  :defer t)
+
 (use-package orderless
   :ensure t
-  :init
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides
-        '((file (styles basic partial-completion)))))
-
-(use-package nerd-icons-corfu
-  :ensure t)
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package corfu
   :ensure t
-  :init
+  :config
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
   :custom
   (corfu-auto t)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
-  (completion-styles '(flex basic)))
+  (corfu-popupinfo-delay '(0.5 . 0.2)))
+
+(use-package nerd-icons-corfu
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package cape
   :ensure t
-  :init
+  :config
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-symbol))
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package transient
   :ensure t)
 
 (use-package magit
   :ensure t
-  :after transient
   :bind (("C-c g" . magit-status)))
 
 (use-package apheleia
@@ -121,14 +161,13 @@
 
 (use-package dashboard
   :ensure t
+  :custom
+  (dashboard-items '((projects . 5)
+                     (recents . 5)
+                     (bookmarks . 5)))
+  (dashboard-projects-backend 'project-el)
+  (dashboard-center-content t)
   :config
-  (setq dashboard-items '((projects . 5)
-                          (recents . 5)
-                          (bookmarks . 5)))
-  (setq dashboard-projects-backend 'project-el)
-  (setq dashboard-center-content t)
-  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
-  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
 (provide 'packages)

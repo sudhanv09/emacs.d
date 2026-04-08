@@ -2,20 +2,24 @@
   :ensure nil
   :defer t
   :init
-  (setq eglot-sync-connect 1)
+  (setq eglot-sync-connect 1
+        eglot-autoshutdown t
+        ;; Let apheleia handle formatting.
+        eglot-stay-out-of '(format))
   :hook
   ((python-base-mode . eglot-ensure)
-   (go-ts-mode . eglot-ensure))
-  
+   (go-ts-mode . eglot-ensure)
+   (rust-ts-mode . eglot-ensure))
+
   :config
   (add-to-list 'eglot-server-programs
-               '(python-base-mode
-                 . ("ruff" "server")))
+               '(python-base-mode . ("ruff" "server")))
   (add-to-list 'eglot-server-programs '(go-ts-mode . ("gopls")))
   (add-to-list 'eglot-server-programs
-               '((rustic-mode rust-ts-mode) . ("rust-analyzer" :initializationOptions (:checkOnSave (:command "clippy")))))
-
-  )
+               '((rustic-mode rust-ts-mode)
+                 . ("rust-analyzer"
+                    :initializationOptions
+                    (:checkOnSave (:command "clippy"))))))
 
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
 (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))

@@ -6,6 +6,6 @@
 
 (use-package mood-line
   :ensure t
-  :init (mood-line-mode))
+  :config (mood-line-mode))
 
 (provide 'ui)
