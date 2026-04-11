@@ -1,20 +1,15 @@
 (require 'meow)
 
-(defun reload-config ()
-  "Reload Emacs config."
-  (interactive)
-  (load-file (expand-file-name "init.el" user-emacs-directory)))
-
 (defun my/scroll-down-half ()
-  "Scroll down half page and recenter cursor."
+  "Scroll backward (page up) half a screen with cursor centered."
   (interactive)
-  (scroll-down-command)
+  (forward-line (- (/ (window-body-height) 2)))
   (recenter))
 
 (defun my/scroll-up-half ()
-  "Scroll up half page and recenter cursor."
+  "Scroll forward (page down) half a screen with cursor centered."
   (interactive)
-  (scroll-up-command)
+  (forward-line (/ (window-body-height) 2))
   (recenter))
 
 (defun my/meow-setup ()
@@ -29,8 +24,6 @@
      ;; global leader
      `("SPC" . ,global-leader-map)))
   (meow-leader-define-key
-   '("c c" . reload-config)
-   
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
    '("3" . meow-digit-argument)
@@ -72,7 +65,13 @@
    ;; Org mode
    '("o c" . org-capture)
    '("o a" . org-agenda)
-   
+
+   ;; Sessions
+   '("S s" . easysession-switch-to)
+   '("S S" . easysession-save)
+   '("S d" . easysession-delete)
+   '("S r" . easysession-rename)
+
    '("x" . execute-extended-command)
    '("g" . magit-status)
    '("h" . describe-symbol))
@@ -139,9 +138,11 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . keyboard-quit)
-   '("C-d" . my/scroll-up-half)
-   '("C-u" . my/scroll-down-half))) 
+   '("<escape>" . keyboard-quit))
+
+  ;; Bind C-d/C-u directly on the state keymap within meow-setup
+  (define-key meow-normal-state-keymap (kbd "C-d") #'my/scroll-up-half)
+  (define-key meow-normal-state-keymap (kbd "C-u") #'my/scroll-down-half))
 
 (define-key meow-insert-state-keymap
             (kbd meow-local-leader-insert-prefix)

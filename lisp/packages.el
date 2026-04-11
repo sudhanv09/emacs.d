@@ -5,8 +5,13 @@
 
 (use-package easysession
   :ensure t
-  :init
-  (add-hook 'emacs-startup-hook #'easysession-save-mode 103))
+  :custom
+  (easysession-save-interval (* 10 60))
+  :config
+  (setq easysession-setup-load-session nil)
+  (easysession-setup)
+
+  (add-hook 'easysession-new-session-hook #'dashboard-open))
 
 (use-package casual
   :ensure t
