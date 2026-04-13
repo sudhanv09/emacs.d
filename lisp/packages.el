@@ -11,6 +11,30 @@
   (setq easysession-setup-load-session nil)
   (easysession-setup)
 
+  (defun my/easysession-new ()
+    (interactive)
+    (call-interactively #'easysession-reset))
+  
+  
+  (defun my/easysession-switch ()
+    (interactive)
+    (easysession-save)
+    (call-interactively #'easysession-load))
+
+  (defun my/dashboard-get-sessions ()
+    (when (boundp 'easysession--sessions)
+      easysession--sessions))
+
+  (defun dashboard-insert-sessions (list-size)
+    (insert "Sessions:\n")
+    (dolist (session (seq-take (my/dashboard-get-sessions) list-size))
+      (insert-button
+       (format "%s" session)
+       'action (lambda (_)
+                 (easysession-load session))
+       'follow-link t)
+      (insert "\n")))
+  
   (add-hook 'easysession-new-session-hook #'dashboard-open))
 
 (use-package casual
@@ -169,10 +193,11 @@
   :custom
   (dashboard-items '((projects . 5)
                      (recents . 5)
-                     (bookmarks . 5)))
+                     (sessions . 5)))
   (dashboard-projects-backend 'project-el)
   (dashboard-center-content t)
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (add-to-list 'dashboard-item-generators '(sessions . dashboard-insert-sessions)))
 
 (provide 'packages)

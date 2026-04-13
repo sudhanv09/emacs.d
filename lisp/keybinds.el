@@ -67,8 +67,9 @@
    '("o a" . org-agenda)
 
    ;; Sessions
-   '("S s" . easysession-switch-to)
+   '("S s" . my/easysession-switch)
    '("S S" . easysession-save)
+   '("S n" . my/easysession-new)
    '("S d" . easysession-delete)
    '("S r" . easysession-rename)
 
