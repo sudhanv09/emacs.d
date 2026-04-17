@@ -38,7 +38,7 @@
    '("?" . meow-cheatsheet)
 
    ;; file ops
-   '("." . consult-find)
+   '("." . consult-fd)
    '("/" . consult-ripgrep)
    '("f" . find-file)
    '("b" . consult-buffer)

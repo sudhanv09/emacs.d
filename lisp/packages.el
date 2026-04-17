@@ -49,6 +49,7 @@
   :ensure t
   :custom
   (vertico-cycle t)
+  (completion-ignore-case t)
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
   :config
@@ -113,13 +114,6 @@
 (use-package embark-consult
   :ensure t
   :after (embark consult))
-
-(use-package consult-dir
-  :ensure t
-  :bind (("C-x C-d" . consult-dir)
-         :map vertico-map
-         ("C-x C-d" . consult-dir)
-         ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package wgrep
   :ensure t
