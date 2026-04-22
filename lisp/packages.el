@@ -37,6 +37,9 @@
   
   (add-hook 'easysession-new-session-hook #'dashboard-open))
 
+(use-package eat
+  :ensure t)
+
 (use-package casual
   :ensure t
   :defer t)
@@ -190,6 +193,7 @@
                      (sessions . 5)))
   (dashboard-projects-backend 'project-el)
   (dashboard-center-content t)
+  (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
   :config
   (dashboard-setup-startup-hook)
   (add-to-list 'dashboard-item-generators '(sessions . dashboard-insert-sessions)))
