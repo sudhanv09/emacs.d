@@ -6,9 +6,13 @@
 
 (elpaca-wait)
 
-(require 'ui)
 (require 'defaults)
-(require 'packages)
+(require 'completion)
+(require 'editor)
+(require 'tools)
+(require 'vc)
+(require 'langs)
+(require 'ui)
 (require 'meow-config)
 (require 'lsp)
 (require 'uniquify)

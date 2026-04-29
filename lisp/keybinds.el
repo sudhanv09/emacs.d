@@ -66,12 +66,13 @@
    '("o c" . org-capture)
    '("o a" . org-agenda)
 
-   ;; Sessions
-   '("S s" . my/easysession-switch)
-   '("S S" . easysession-save)
-   '("S n" . my/easysession-new)
-   '("S d" . easysession-delete)
-   '("S r" . easysession-rename)
+   ;; Folding
+   '("z o" . kirigami-open-fold)
+   '("z O" . kirigami-open-fold-rec)
+   '("z r" . kirigami-open-folds)
+   '("z c" . kirigami-close-fold)
+   '("z m" . kirigami-close-folds)
+   '("z a" . kirigami-toggle-fold)
 
    '("x" . execute-extended-command)
    '("g" . magit-status)
@@ -128,8 +129,8 @@
    '("R" . meow-swap-grab)
    '("s" . meow-kill)
    '("t" . meow-till)
-   '("u" . meow-undo)
-   '("U" . meow-undo-in-selection)
+   '("u" . undo-fu-only-undo)
+   '("U" . undo-fu-only-redo)
    '("v" . meow-visit)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
