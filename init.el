@@ -1,18 +1,18 @@
-;;; -*- lexical-binding: t; -*-
+;;; init.el --- Emacs configuration -*- lexical-binding: t; -*-
 
-(add-to-list 'load-path
-             (expand-file-name "lisp" user-emacs-directory))
-(load (expand-file-name "lisp/elpaca" user-emacs-directory))
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(require 'wk-elpaca)
+
+(load-theme 'monokai t)
+
+(setq make-backup-files nil)
 
 (elpaca-wait)
 
-(require 'defaults)
-(require 'completion)
-(require 'editor)
-(require 'tools)
-(require 'vc)
-(require 'langs)
-(require 'ui)
-(require 'meow-config)
-(require 'lsp)
-(require 'uniquify)
+(require 'wk-dired)
+(require 'wk-meow)
+(require 'wk-packages)
+(require 'wk-org)
+(require 'wk-defaults)
