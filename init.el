@@ -5,7 +5,7 @@
 
 (require 'wk-elpaca)
 
-(load-theme 'monokai t)
+(load-theme 'mood-one t)
 
 (setq make-backup-files nil)
 
@@ -16,3 +16,4 @@
 (require 'wk-packages)
 (require 'wk-org)
 (require 'wk-defaults)
+(require 'wk-ui)

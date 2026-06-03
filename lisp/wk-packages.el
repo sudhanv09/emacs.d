@@ -3,26 +3,6 @@
 (use-package compat
   :ensure t)
 
-(use-package nerd-icons
-  :ensure t)
-
-(use-package nerd-icons-completion
-  :ensure t
-  :after marginalia
-  :config
-  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
-
-(use-package nerd-icons-corfu
-  :ensure t
-  :after corfu
-  :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
-
-(use-package nerd-icons-dired
-  :ensure t
-  :hook
-  (dired-mode . nerd-icons-dired-mode))
-
 (use-package delsel
   :ensure nil ; no need to install it as it is built-in
   :hook (after-init . delete-selection-mode))
@@ -82,6 +62,24 @@
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
+
+(use-package diff-hl
+  :ensure t
+  :hook ((after-init . global-diff-hl-mode)
+         (dired-mode . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
+
+(use-package indent-bars
+  :ensure t
+  :hook ((prog-mode conf-mode yaml-ts-mode) . indent-bars-mode))
+
+(use-package eglot
+  :ensure nil
+  :hook ((c-mode python-mode) . eglot-ensure)
+  :bind (:map eglot-mode-map
+              ("C-c c a" . eglot-code-actions)
+              ("C-c c f" . eglot-format)
+              ("C-c c r" . eglot-rename)))
 
 (use-package eat
   :ensure t)
