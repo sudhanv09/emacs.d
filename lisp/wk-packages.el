@@ -51,8 +51,7 @@
   (which-key-mode 1))
 
 (use-package ace-window
-  :ensure t
-  :bind (("M-o" . ace-window)))
+  :ensure t)
 
 (use-package apheleia
   :ensure t
@@ -62,6 +61,9 @@
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
+
+(use-package transient
+  :ensure t)
 
 (use-package diff-hl
   :ensure t
@@ -90,10 +92,11 @@
 
 (use-package corfu
   :ensure t
-  :hook (after-init . global-corfu-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
-  :config
+  :init
   (setq tab-always-indent 'complete)
+  :config
+  (global-corfu-mode 1)
   (setq corfu-preview-current nil)
   (setq corfu-min-width 20)
 
@@ -104,5 +107,10 @@
   (with-eval-after-load 'savehist
     (corfu-history-mode 1)
     (add-to-list 'savehist-additional-variables 'corfu-history)))
+
+(use-package cape
+  :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'completion-at-point-functions #'cape-elisp-symbol))))
 
 (provide 'wk-packages)

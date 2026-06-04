@@ -18,3 +18,4 @@
 (require 'wk-defaults)
 (require 'wk-ui)
 (require 'wk-project)
+(require 'wk-keybinds)
