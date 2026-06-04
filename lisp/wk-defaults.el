@@ -8,12 +8,7 @@
 (setq select-enable-primary nil)
 (setq save-interprogram-paste-before-kill t)
 
-(global-set-key (kbd "C-c x") #'kill-region)
-(global-set-key (kbd "C-c c") #'kill-ring-save)
-(global-set-key (kbd "C-c v") #'yank)
-
 (setq auto-window-vscroll nil)
-(desktop-save-mode 1)
 (savehist-mode 1)
 
 (add-hook 'dired-mode-hook 'auto-revert-mode)
