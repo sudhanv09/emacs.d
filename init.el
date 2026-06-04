@@ -17,3 +17,4 @@
 (require 'wk-org)
 (require 'wk-defaults)
 (require 'wk-ui)
+(require 'wk-project)
