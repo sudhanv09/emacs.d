@@ -30,3 +30,4 @@
 (require 'wk-ui)
 (require 'wk-project)
 (require 'wk-keybinds)
+(require 'wk-completions)
