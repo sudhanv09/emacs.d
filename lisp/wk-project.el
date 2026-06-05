@@ -20,7 +20,11 @@
 (defun my/project-switch-in-persp (dir)
   "Switch to or create a perspective named after the project in DIR."
   (interactive (list (project-prompt-project-dir)))
-  (let ((name (file-name-nondirectory (directory-file-name dir))))
+  (let* ((dir (file-truename dir))
+	 (name (file-name-nondirectory
+		(directory-file-name dir)))
+	 (default-directory dir)
+	 (project (project-current nil dir)))
     (persp-switch name)
     (project-find-file)))
 

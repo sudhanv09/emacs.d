@@ -6,12 +6,16 @@
    '("." . find-file)
    '("`" . previous-buffer)
    '("RET" . eat)
+
+   '("b b" . consult-project-buffer)
    
    '("c c" . project-compile)
 
+   '("p p" . persp-switch)
    '("p f" . project-find-file)
-   '("p p" . project-switch-project)
+   '("p n" . my/project-switch-in-persp)
    '("p b" . persp-switch-to-buffer)
+   '("p k" . persp-kill-buffer*)
    
    '("w w" . ace-window)
    '("w d" . delete-window)

@@ -1,7 +1,9 @@
 ;;; wk-org.el --- Org mode configuration -*- lexical-binding: t; -*-
 
 (use-package org
-  :ensure nil)
+  :ensure nil
+  :config
+  (org-indent-mode t))
 
 (use-package org-modern
   :ensure t

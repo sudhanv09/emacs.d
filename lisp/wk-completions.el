@@ -31,7 +31,6 @@
   :ensure t
   :bind
   (("C-s" . consult-line)
-   ("C-x b" . consult-buffer)
    ("M-y" . consult-yank-pop)
    ("M-g g" . consult-goto-line)
    ("M-g i" . consult-imenu)
