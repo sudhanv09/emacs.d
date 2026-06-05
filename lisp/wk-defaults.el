@@ -7,7 +7,7 @@
 (setq select-enable-clipboard t)
 (setq select-enable-primary nil)
 (setq save-interprogram-paste-before-kill t)
-
+(setq scroll-preserve-screen-position 'always)
 (setq auto-window-vscroll nil)
 (savehist-mode 1)
 

@@ -18,4 +18,6 @@
    '("w s" . split-window-below)
    '("w v" . split-window-right)))
 
+(global-set-key (kbd "C-c d") #'duplicate-dwim)
+
 (provide 'wk-keybinds)
