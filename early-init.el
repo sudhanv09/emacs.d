@@ -12,7 +12,7 @@
 (setq inhibit-splash-screen t)
 
 (when (boundp 'native-comp-eln-load-path)
-  (startup-redirect-eln-cache (expand-file-name "emacs/eln-cache" my-data-dir)))
+  (startup-redirect-eln-cache (expand-file-name "eln-cache" my-data-dir)))
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
