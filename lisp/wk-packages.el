@@ -12,6 +12,9 @@
   :init
   (which-key-mode 1))
 
+(use-package treemacs
+  :ensure t)
+
 (use-package ace-window
   :ensure t)
 

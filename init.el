@@ -4,7 +4,7 @@
 (setq savehist-file (concat my-data-dir "history"))
 (setq project-list-file (concat my-data-dir "projects"))
 (setq tramp-persistency-file-name (concat my-data-dir "tramp"))
-(setq persp-save-dir (concat my-data-dir "persp-save"))
+
 
 ;; Transient (Magit etc.)
 (setq transient-history-file  (concat my-data-dir "transient/history.el"))
