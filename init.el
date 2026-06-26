@@ -13,10 +13,11 @@
 
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "extra/" user-emacs-directory))
 
 (require 'wk-elpaca)
 
-(load-theme 'mood-one t)
+(load-theme 'gruber-darker t)
 
 (setq make-backup-files nil)
 
@@ -31,3 +32,4 @@
 (require 'wk-project)
 (require 'wk-keybinds)
 (require 'wk-completions)
+(require 'wk-langs)

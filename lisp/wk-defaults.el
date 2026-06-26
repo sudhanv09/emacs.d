@@ -4,11 +4,11 @@
 (setq-default sentence-end-double-space nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq use-dialog-box nil)
-(setq select-enable-clipboard t)
-(setq select-enable-primary nil)
+
 (setq save-interprogram-paste-before-kill t)
 (setq scroll-preserve-screen-position 'always)
 (setq auto-window-vscroll nil)
+
 (savehist-mode 1)
 
 (add-hook 'dired-mode-hook 'auto-revert-mode)
@@ -17,5 +17,8 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 (electric-pair-mode 1)
+
+(setq select-enable-clipboard t)
+(setq select-enable-primary t)
 
 (provide 'wk-defaults)

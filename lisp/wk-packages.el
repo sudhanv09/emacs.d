@@ -13,10 +13,24 @@
   (which-key-mode 1))
 
 (use-package treemacs
+  :ensure t
+  :config
+  (setq
+   treemacs-persist-file "~/.local/share/emacs/treemacs-persist"
+   treemacs-indentation 2
+   treemacs-follow-after-init t)
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  (treemacs-fringe-indicator-mode 'always))
+
+(use-package treemacs-magit
+  :after (treemacs magit)
   :ensure t)
 
 (use-package ace-window
-  :ensure t)
+  :ensure t
+  :config
+  (setq aw-ignored-buffers (delq 'treemacs-mode aw-ignored-buffers)))
 
 (use-package apheleia
   :ensure t
