@@ -23,13 +23,10 @@
 
 (elpaca-wait)
 
-(require 'wk-dired)
 (require 'wk-meow)
 (require 'wk-packages)
 (require 'wk-org)
-(require 'wk-defaults)
-(require 'wk-ui)
-(require 'wk-project)
+(require 'wk-core)
 (require 'wk-keybinds)
 (require 'wk-completions)
 (require 'wk-langs)
