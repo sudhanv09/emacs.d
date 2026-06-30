@@ -25,8 +25,9 @@
 
 (require 'wk-meow)
 (require 'wk-packages)
-(require 'wk-org)
 (require 'wk-core)
 (require 'wk-keybinds)
 (require 'wk-completions)
 (require 'wk-langs)
+(require 'wk-reading)
+(require 'wk-workspaces)

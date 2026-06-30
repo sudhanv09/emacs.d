@@ -83,4 +83,31 @@
               ("C-c c f" . eglot-format)
               ("C-c c r" . eglot-rename)))
 
+;; Jump / search labels (avy-like)
+(use-package flash
+  :ensure t
+  :custom
+  (flash-multi-window t)
+  (flash-backdrop t)
+  (flash-autojump t)
+  (flash-rainbow nil)
+  (flash-search-folds t)
+  (flash-char-jump-labels t)
+  (flash-char-multi-line t)
+  :config
+  (require 'flash-isearch)
+  (flash-isearch-mode 1))
+
+;; Code folding
+(use-package kirigami
+  :ensure t)
+
+;; Per-workspace buffer isolation (backend for the workspaces module)
+(use-package bufferlo
+  :ensure t
+  :demand t
+  :config
+  (bufferlo-mode 1)
+  (bufferlo-anywhere-mode 1))
+
 (provide 'wk-packages)
