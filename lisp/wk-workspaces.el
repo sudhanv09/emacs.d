@@ -1,5 +1,12 @@
 ;;; wk-workspaces.el --- Tab-bar workspaces with bufferlo isolation -*- lexical-binding: t; -*-
-;; bufferlo (the buffer-isolation backend) is declared in wk-packages.el.
+
+;;; Backend: bufferlo gives each tab-bar tab a real, isolated buffer set
+(use-package bufferlo
+  :ensure t
+  :demand t
+  :config
+  (bufferlo-mode 1)
+  (bufferlo-anywhere-mode 1))
 
 ;;; Faces
 (defface +workspace-tab-face
@@ -138,13 +145,25 @@
                               :sort      'visibility
                               :as        #'buffer-name))))
 
-  ;; Prepend (add-to-list pushes to front): workspace-local ends up first,
-  ;; existing default sources (recent files, bookmarks, project) are kept.
-  (add-to-list 'consult-buffer-sources '+workspace-consult-source-other-buffer)
-  (add-to-list 'consult-buffer-sources '+workspace-consult-source-buffer))
+  ;; Scope consult-buffer to the current workspace
+  (setq consult-buffer-sources
+        (cons '+workspace-consult-source-buffer
+              (cons '+workspace-consult-source-other-buffer
+                    (remq 'consult--source-buffer consult-buffer-sources)))))
 
 ;;; Bootstrap — hide the native tab-bar; workspaces show in the echo area
 (setq tab-bar-show nil)
+
+;;; Persistence: save/restore workspaces across restarts.
+(use-package easysession
+  :ensure t
+  :demand t
+  :custom
+  (easysession-save-interval (* 10 60))
+  (easysession-switch-to-save-session t)
+  (easysession-setup-load-session t)
+  :config
+  (easysession-setup))
 
 (provide 'wk-workspaces)
 ;;; wk-workspaces.el ends here

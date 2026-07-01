@@ -11,7 +11,7 @@
    '("b b" . switch-to-buffer)
    '("b n" . next-buffer)
    '("b i" . ibuffer)
-   '("b S" . my/save-all-buffers)
+
 
    '("o t" . treemacs)
 
@@ -20,13 +20,21 @@
    '("w s" . split-window-below)
    '("w v" . split-window-right)
 
-   ;; Workspaces (tab-bar + bufferlo)
+   ;; Workspaces — live tab-bar + bufferlo
    '("TAB TAB" . +workspace/display)
    '("TAB n" . +workspace/new)
    '("TAB d" . +workspace/delete)
    '("TAB r" . +workspace/rename)
-   '("TAB s" . +workspace/switch-to)
-   '("TAB p" . +workspace/switch-to-project)))
+   '("TAB ." . +workspace/switch-to)
+   '("TAB [" . tab-bar-switch-to-prev-tab)
+   '("TAB ]" . tab-bar-switch-to-next-tab)
+   '("TAB p" . +workspace/switch-to-project)
+
+   ;; Sessions — persistent (easysession)
+   '("TAB s" . easysession-save)
+   '("TAB l" . easysession-switch-to)
+   '("TAB R" . easysession-rename)
+   '("TAB x" . easysession-delete)))
 
 (global-set-key (kbd "C-c d") #'duplicate-dwim)
 

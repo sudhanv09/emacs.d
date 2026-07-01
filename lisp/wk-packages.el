@@ -102,12 +102,4 @@
 (use-package kirigami
   :ensure t)
 
-;; Per-workspace buffer isolation (backend for the workspaces module)
-(use-package bufferlo
-  :ensure t
-  :demand t
-  :config
-  (bufferlo-mode 1)
-  (bufferlo-anywhere-mode 1))
-
 (provide 'wk-packages)
