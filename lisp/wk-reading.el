@@ -15,8 +15,8 @@
               (pdf-view-midnight-minor-mode 1)
               (setq-local mode-line-format nil)))
   ;; vim-style navigation
-  (define-key pdf-view-mode-map (kbd "j") #'pdf-view-next-line-or-next-page)
-  (define-key pdf-view-mode-map (kbd "k") #'pdf-view-previous-line-or-previous-page)
+  (define-key pdf-view-mode-map (kbd "n") #'pdf-view-next-line-or-next-page)
+  (define-key pdf-view-mode-map (kbd "e") #'pdf-view-previous-line-or-previous-page)
   (define-key pdf-view-mode-map (kbd "J") #'pdf-view-next-page)
   (define-key pdf-view-mode-map (kbd "K") #'pdf-view-previous-page)
   (define-key pdf-view-mode-map (kbd "g") #'pdf-view-first-page)
@@ -26,14 +26,14 @@
   (define-key pdf-view-mode-map (kbd "+") #'pdf-view-enlarge)
   (define-key pdf-view-mode-map (kbd "-") #'pdf-view-shrink)
   (define-key pdf-view-mode-map (kbd "=") #'pdf-view-fit-page-to-window)
-  (define-key pdf-view-mode-map (kbd "s") #'pdf-view-fit-width-to-window)
+  (define-key pdf-view-mode-map (kbd "f") #'pdf-view-fit-width-to-window)
   (define-key pdf-view-mode-map (kbd "m") #'pdf-view-set-slice-from-bounding-box)
   (define-key pdf-view-mode-map (kbd "M") #'pdf-view-reset-slice)
   (define-key pdf-view-mode-map (kbd "i") #'pdf-view-midnight-minor-mode)
   (define-key pdf-view-mode-map (kbd "y") #'pdf-view-kill-ring-save)
   (define-key pdf-view-mode-map (kbd "/") #'isearch-forward)
-  (define-key pdf-view-mode-map (kbd "n") #'isearch-repeat-forward)
-  (define-key pdf-view-mode-map (kbd "N") #'isearch-repeat-backward)
+  (define-key pdf-view-mode-map (kbd "s") #'isearch-repeat-forward)
+  (define-key pdf-view-mode-map (kbd "S") #'isearch-repeat-backward)
   (define-key pdf-view-mode-map (kbd "q") #'quit-window))
 
 (use-package saveplace-pdf-view
@@ -49,18 +49,6 @@
   (setq large-file-warning-threshold (* 50 1024 1024))
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
   :config
-  (setq nov-unzip-program (executable-find "unzip"))
-
-  (defun my/nov-setup ()
-    (face-remap-add-relative 'variable-pitch :height 1.4)
-    (buffer-face-mode 1)
-    (setq-local line-spacing 0.3)
-    (visual-line-mode 1)
-    ;; Optional centered reading column if olivetti is installed
-    (when (require 'olivetti nil t)
-      (setq-local olivetti-body-width 85)
-      (olivetti-mode 1)))
-
-  (add-hook 'nov-mode-hook #'my/nov-setup))
+  (setq nov-unzip-program (executable-find "unzip")))
 
 (provide 'wk-reading)
