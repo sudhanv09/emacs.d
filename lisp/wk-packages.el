@@ -102,4 +102,7 @@
 (use-package kirigami
   :ensure t)
 
+(use-package ghostel
+  :ensure t)
+
 (provide 'wk-packages)
