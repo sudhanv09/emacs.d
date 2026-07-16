@@ -28,6 +28,4 @@
 (require 'wk-core)
 (require 'wk-keybinds)
 (require 'wk-completions)
-(require 'wk-langs)
-(require 'wk-reading)
 (require 'wk-workspaces)

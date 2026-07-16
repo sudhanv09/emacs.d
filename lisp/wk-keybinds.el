@@ -8,7 +8,8 @@
 
    '("b k" . (lambda () (interactive) (kill-buffer (current-buffer))))
    '("b l" . bufferlo-switch-to-scratch-buffer)
-   '("b b" . bufferlo-list-buffers)
+   '("b b" . bufferlo-switch-to-buffer)
+   '("b B" . bufferlo-list-buffers)
    '("b n" . next-buffer)
 
    '("o t" . treemacs)
