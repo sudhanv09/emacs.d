@@ -372,10 +372,16 @@
    `(whitespace-space-before-tab ((t ,(list :background gruber-darker-brown
                                             :foreground gruber-darker-brown))))
 
-   ;; tab-bar
+   ;; tab-bar / workspaces
    `(tab-bar ((t (:background ,gruber-darker-bg+1 :foreground ,gruber-darker-bg+4))))
    `(tab-bar-tab ((t (:background nil :foreground ,gruber-darker-yellow :weight bold))))
    `(tab-bar-tab-inactive ((t (:background nil))))
+   `(+workspace-tab-face ((t (:foreground ,gruber-darker-bg+4))))
+   `(+workspace-tab-selected-face ((t (:foreground ,gruber-darker-yellow
+                                      :background ,gruber-darker-bg
+                                      :weight bold
+                                      :box (:line-width 1
+                                            :color ,gruber-darker-bg+4)))))
 
    ;; vterm / ansi-term
    `(term-color-black ((t (:foreground ,gruber-darker-bg+3 :background ,gruber-darker-bg+4))))

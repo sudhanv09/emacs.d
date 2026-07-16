@@ -14,7 +14,7 @@
   "Face for inactive workspace tabs.")
 
 (defface +workspace-tab-selected-face
-  '((t :inherit (bold default)))
+  '((t :inherit (bold default) :box t))
   "Face for the active workspace tab.")
 
 ;;; Helpers
@@ -27,9 +27,7 @@
 ;;; Display
 (defun +workspace--format-tab (index name is-current)
   (let* ((label (format "[%d] %s" (1+ index) name))
-         (text  (if is-current
-                    (format "(%s) " label)
-                  (format " %s  " label)))
+         (text  (format " %s " label))
          (face  (if is-current
                     '+workspace-tab-selected-face
                   '+workspace-tab-face)))
@@ -38,15 +36,17 @@
 (defun +workspace/display ()
   "Show workspace bar in the echo area."
   (interactive)
-  (let* ((tabs    (tab-bar-tabs))
-         (current (tab-bar--current-tab)))
+  (let ((tabs (tab-bar-tabs))
+        (current-index (tab-bar--current-tab-index))
+        (index -1))
     (message "%s"
              (mapconcat
               (lambda (tab)
+                (setq index (1+ index))
                 (+workspace--format-tab
-                 (seq-position tabs tab)
+                 index
                  (alist-get 'name tab)
-                 (eq tab current)))
+                 (= index current-index)))
               tabs ""))))
 
 (dolist (fn '(tab-bar-new-tab
