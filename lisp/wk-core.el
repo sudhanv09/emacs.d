@@ -6,8 +6,8 @@
 (setq use-dialog-box nil)
 
 (setq save-interprogram-paste-before-kill t)
-(setq scroll-preserve-screen-position 'always)
 (setq auto-window-vscroll nil)
+(setq scroll-conservatively 101)
 
 (savehist-mode 1)
 

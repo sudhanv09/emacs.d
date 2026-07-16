@@ -53,7 +53,7 @@
    '("g" . meow-cancel-selection)
    '("G" . meow-grab)
    '("h" . meow-mark-word)
-   '("h" . meow-mark-symbol)
+   '("H" . meow-mark-symbol)
    '("i" . meow-right)
    '("I" . meow-right-expand)
    '("j" . meow-join)

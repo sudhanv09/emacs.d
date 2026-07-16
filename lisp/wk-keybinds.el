@@ -7,11 +7,9 @@
    '("," . consult-buffer)
 
    '("b k" . (lambda () (interactive) (kill-buffer (current-buffer))))
-   '("b l" . (lambda () (interactive) (switch-to-buffer nil)))
-   '("b b" . switch-to-buffer)
+   '("b l" . bufferlo-switch-to-scratch-buffer)
+   '("b b" . bufferlo-list-buffers)
    '("b n" . next-buffer)
-   '("b i" . ibuffer)
-
 
    '("o t" . treemacs)
 
