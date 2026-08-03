@@ -29,3 +29,4 @@
 (require 'wk-keybinds)
 (require 'wk-completions)
 (require 'wk-workspaces)
+(require 'wk-langs)

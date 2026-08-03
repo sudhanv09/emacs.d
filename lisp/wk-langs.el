@@ -9,7 +9,7 @@
 
 (with-eval-after-load 'apheleia
   (add-to-list 'apheleia-formatters
-	       '(c3fmt "/home/sudhanv/personal/c3/c3fmt" "--stdin" "--stdout" "--stdin-filepath" filepath))
+			   '(c3fmt "/home/sudhanv/opt/c3/c3fmt" "--stdin" "--stdout" "--stdin-filepath" filepath))
   (add-to-list 'apheleia-mode-alist '(c3-ts-mode . c3fmt)))
 
 (provide 'wk-langs)

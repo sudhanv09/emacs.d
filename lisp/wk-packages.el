@@ -38,10 +38,10 @@
   (setq
    treemacs-persist-file "~/.local/share/emacs/treemacs-persist"
    treemacs-indentation 2
-   treemacs-follow-after-init t)
-  (treemacs-follow-mode t)
-  (treemacs-filewatch-mode t)
-  (treemacs-fringe-indicator-mode 'always))
+   treemacs-follow-after-init t
+   treemacs-follow-mode t
+   treemacs-filewatch-mode t
+   treemacs-fringe-indicator-mode 'always))
 
 (use-package treemacs-magit
   :after (treemacs magit)
@@ -77,7 +77,7 @@
 
 (use-package eglot
   :ensure nil
-  :hook ((c-mode python-mode) . eglot-ensure)
+  :hook ((c-mode python-mode js-ts-mode c3-mode). eglot-ensure)
   :bind (:map eglot-mode-map
               ("C-c c a" . eglot-code-actions)
               ("C-c c f" . eglot-format)
@@ -103,6 +103,7 @@
   :ensure t)
 
 (use-package ghostel
-  :ensure t)
+  :ensure t
+  :bind (("C-x m" . ghostel)))
 
 (provide 'wk-packages)
