@@ -12,4 +12,7 @@
 			   '(c3fmt "/home/sudhanv/opt/c3/c3fmt" "--stdin" "--stdout" "--stdin-filepath" filepath))
   (add-to-list 'apheleia-mode-alist '(c3-ts-mode . c3fmt)))
 
+(use-package nim-mode
+  :ensure t)
+
 (provide 'wk-langs)
