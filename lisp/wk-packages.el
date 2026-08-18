@@ -32,25 +32,11 @@
   :init
   (which-key-mode 1))
 
-(use-package treemacs
-  :ensure t
-  :config
-  (setq
-   treemacs-persist-file "~/.local/share/emacs/treemacs-persist"
-   treemacs-indentation 2
-   treemacs-follow-after-init t
-   treemacs-follow-mode t
-   treemacs-filewatch-mode t
-   treemacs-fringe-indicator-mode 'always))
-
-(use-package treemacs-magit
-  :after (treemacs magit)
+(use-package dirvish
   :ensure t)
 
 (use-package ace-window
-  :ensure t
-  :config
-  (setq aw-ignored-buffers (delq 'treemacs-mode aw-ignored-buffers)))
+  :ensure t)
 
 (use-package apheleia
   :ensure t
@@ -66,10 +52,10 @@
 
 (use-package diff-hl
   :ensure t
-  :hook ((after-init . diff-hl-mode)
-		 (after-init . global-diff-hl-mode)
-         (dired-mode . diff-hl-dired-mode)
-         (magit-post-refresh . diff-hl-magit-post-refresh)))
+  :hook ((dired-mode . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
+  :config
+  (global-diff-hl-mode))
 
 (use-package indent-bars
   :ensure t

@@ -12,8 +12,6 @@
    '("b B" . bufferlo-list-buffers)
    '("b n" . next-buffer)
 
-   '("o t" . treemacs)
-
    '("w w" . ace-window)
    '("w d" . delete-window)
    '("w s" . split-window-below)
