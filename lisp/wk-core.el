@@ -7,7 +7,13 @@
 
 (setq save-interprogram-paste-before-kill t)
 (setq auto-window-vscroll nil)
-(setq scroll-conservatively 101)
+
+(setq scroll-margin 3
+      scroll-conservatively 101
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01
+      scroll-preserve-screen-position t
+      auto-window-vscroll nil)
 
 (savehist-mode 1)
 
