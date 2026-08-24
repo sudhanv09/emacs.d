@@ -4,6 +4,8 @@
 (setq-default sentence-end-double-space nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq use-dialog-box nil)
+(setq-default fill-column 80)
+(global-visual-line-mode t)
 
 (setq save-interprogram-paste-before-kill t)
 (setq auto-window-vscroll nil)
