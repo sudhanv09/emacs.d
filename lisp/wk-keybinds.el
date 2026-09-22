@@ -5,6 +5,10 @@
    '("." . find-file)
    '("/" . consult-ripgrep)
    '("," . consult-buffer)
+   '("SPC" . project-find-file)
+
+
+   (cons "p" project-prefix-map)
 
    '("b k" . (lambda () (interactive) (kill-buffer (current-buffer))))
    '("b l" . bufferlo-switch-to-scratch-buffer)

@@ -57,9 +57,10 @@
   :config
   (global-diff-hl-mode))
 
-(use-package indent-bars
+(use-package outline-indent
   :ensure t
-  :hook ((prog-mode conf-mode yaml-ts-mode) . indent-bars-mode))
+  :commands outline-indent-minor-mode)
+
 
 (use-package eglot
   :ensure nil
@@ -86,7 +87,14 @@
 
 ;; Code folding
 (use-package kirigami
-  :ensure t)
+  :ensure t
+  :init
+  (kirigami-global-mode 1)
+
+  (add-hook 'prog-mode-hook #'hs-minor-mode)
+  (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
+  (add-hook 'lisp-mode-hook #'outline-minor-mode)
+  (add-hook 'python-mode-hook #'outline-minor-mode))
 
 (use-package ghostel
   :ensure t
