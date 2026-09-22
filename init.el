@@ -7,7 +7,7 @@
 (require 'wk-elpaca)
 
 (elpaca modus-themes
-  (load-theme 'modus-vague t))
+  (load-theme 'gruber-darker t))
 
 (setq make-backup-files nil)
 
