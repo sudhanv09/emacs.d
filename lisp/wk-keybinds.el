@@ -37,6 +37,18 @@
    '("TAB R" . easysession-rename)
    '("TAB x" . easysession-delete)))
 
+(defun wk-scroll-down () 
+  (interactive)
+  (scroll-up-command)
+  (recenter))
+
+(defun wk-scroll-up () 
+  (interactive)
+  (scroll-down-command)
+  (recenter))
+
 (global-set-key (kbd "C-c d") #'duplicate-dwim)
+(global-set-key (kbd "C-v") #'wk-scroll-down)
+(global-set-key (kbd "M-v") #'wk-scroll-up)
 
 (provide 'wk-keybinds)

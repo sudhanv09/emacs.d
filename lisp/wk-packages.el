@@ -32,9 +32,6 @@
   :init
   (which-key-mode 1))
 
-(use-package dirvish
-  :ensure t)
-
 (use-package ace-window
   :ensure t)
 
@@ -95,9 +92,5 @@
   (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
   (add-hook 'lisp-mode-hook #'outline-minor-mode)
   (add-hook 'python-mode-hook #'outline-minor-mode))
-
-(use-package ghostel
-  :ensure t
-  :bind (("C-x m" . ghostel)))
 
 (provide 'wk-packages)
