@@ -139,6 +139,16 @@
                              :background nil))))
    `(diff-added ((t ,(list :foreground gruber-darker-green
                            :background nil))))
+   ;; Use both foreground and background so diff-hl's thin fringe bitmaps
+   ;; remain clearly visible against the dark background.
+   `(diff-hl-change ((t (:foreground ,gruber-darker-yellow
+                         :background ,gruber-darker-yellow))))
+   `(diff-hl-delete ((t (:foreground ,gruber-darker-red
+                         :background ,gruber-darker-red))))
+   `(diff-hl-insert ((t (:foreground ,gruber-darker-green
+                         :background ,gruber-darker-green))))
+   `(diff-hl-unknown ((t (:foreground ,gruber-darker-wisteria
+                          :background ,gruber-darker-wisteria))))
 
    ;; Dired
    `(dired-directory ((t (:foreground ,gruber-darker-niagara :weight bold))))
