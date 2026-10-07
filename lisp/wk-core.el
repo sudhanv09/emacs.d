@@ -64,6 +64,7 @@
   :config
   (org-indent-mode t)
   (setq
+   org-indent-mode t
    org-return-follows-link t
    org-todo-keywords
    '((sequence "TODO(t)" "DONE(d)" "HOLD(h)" "CANCELLED(c)" "IN PROGRESS(p)"))))
